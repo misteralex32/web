@@ -6,8 +6,8 @@ app = Flask(__name__)
 metrics = PrometheusMetrics(app)
 
 @app.route('/')
-def main():
-    return render_template('index.html')
+def hello():
+    return '<h1>Hello, World!</h1>'
 
 @app.route('/health')
 def health():

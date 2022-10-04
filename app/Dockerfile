@@ -11,4 +11,4 @@ RUN pip3 install prometheus_client
 EXPOSE 5000
 COPY . /web
 
-CMD python3 web/app/server.py
+CMD python3 web/server.py
