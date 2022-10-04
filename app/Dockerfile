@@ -6,7 +6,7 @@ RUN apt update
 RUN apt install python3 python3-pip -y
 RUN pip3 install flask
 
-EXPOSE 5000:80
+EXPOSE 5000
 COPY . /web
 
 CMD python3 /web/server.py
