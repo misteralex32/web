@@ -7,7 +7,7 @@ services:
     volumes:
       - ./app:/app
     expose:
-      - 5000
+      - 5000:5000
     healthcheck:
       test: curl --fail -s http://localhost:5000/ || exit 1
       interval: 30s
