@@ -9,5 +9,9 @@ metrics = PrometheusMetrics(app)
 def hello_world():
     return 'Hello World!'
 
+@app.route("/health")
+def health():
+    return
+    
 if __name__ == "__main__":
     app.run("0.0.0.0")

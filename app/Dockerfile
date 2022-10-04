@@ -7,7 +7,9 @@ RUN apt install python3 python3-pip -y
 RUN pip3 install flask
 RUN pip3 install prometheus_flask_exporter
 RUN pip3 install prometheus_client
+
 EXPOSE 5000:5000
 COPY . /web
 
+HEALTHCHECK CMD curl --fail http://localhost:5000/health || exit
 CMD python3 /web/server.py
