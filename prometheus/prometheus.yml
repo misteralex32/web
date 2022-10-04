@@ -11,9 +11,12 @@ scrape_configs:
     static_configs:
       - targets: ["prometheus:9090"]
 
-  - job_name: "webapp"
-    static_configs:
-      - targets: ["app:5000"] 
+  - job_name: "app"
+    dns_sd_configs:
+      - names: ['app']
+        port: 5000
+        type: A
+        refresh_interval: 5s
   - job_name: node
     scrape_interval: 5s
     static_configs:

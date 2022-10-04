@@ -1,48 +1,21 @@
-import time
-import random
-
 from flask import Flask
 from prometheus_flask_exporter import PrometheusMetrics
 
 
 app = Flask(__name__)
-PrometheusMetrics(app)
+metrics = PrometheusMetrics(app, group_by='endpoint')
 
-
-endpoints = ("one", "two", "three", "four", "five", "error")
-
-
-@app.route("/one")
+@app.route('/')
 def hello_world():
     return 'Hello World!'
-
-def first_route():
-    time.sleep(random.random() * 0.2)
-    return "ok"
-
-
-@app.route("/two")
-def the_second():
-    time.sleep(random.random() * 0.4)
-    return "ok"
-
-
-@app.route("/three")
-def test_3rd():
-    time.sleep(random.random() * 0.6)
-    return "ok"
-
-
-@app.route("/four")
-def fourth_one():
-    time.sleep(random.random() * 0.8)
-    return "ok"
-
-
-@app.route("/error")
-def oops():
-    return ":(", 500
-
+@app.route('/collection/:collection_id/item/:item_id')
+@metrics.counter(
+    'cnt_collection', 'Number of invocations per collection', labels={
+        'collection': lambda: request.view_args['collection_id'],
+        'status': lambda resp: resp.status_code
+    })
+def get_item_from_collection(collection_id, item_id):
+    pass
 
 if __name__ == "__main__":
-    app.run("0.0.0.0", 5000, threaded=True)
+    app.run("0.0.0.0")
