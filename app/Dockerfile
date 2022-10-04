@@ -10,6 +10,6 @@ RUN pip3 install prometheus_flask_exporter
 RUN pip3 install prometheus_client
 
 EXPOSE 5000
-COPY . /app
+COPY . /web
 
-CMD python3 app/server.py
+CMD python3 /web/server.py
