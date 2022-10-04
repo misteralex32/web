@@ -6,7 +6,7 @@ services:
     container_name: flask_app
     volumes:
       - ./app:/app
-    expose:
+    ports:
       - 5000:5000
     healthcheck:
       test: curl --fail -s http://localhost:5000/ || exit 1
