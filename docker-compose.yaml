@@ -14,13 +14,6 @@ services:
       timeout: 10s
       retries: 3
 
-  nginx:
-    build: ./nginx
-    ports:
-      - 80:80
-    depends_on:
-      - app
-
   prometheus:
     image: prom/prometheus:latest
     volumes:
