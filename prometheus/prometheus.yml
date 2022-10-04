@@ -2,5 +2,5 @@ scrape_configs:
   - job_name: node
     scrape_interval: 5s
     static_configs:
-    - targets: ['node-exporter:9100', 'localhost:5000']
+    - targets: ['node-exporter:9100', 'http://84.201.165.96:5000/']
   
