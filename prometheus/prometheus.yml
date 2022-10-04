@@ -9,10 +9,5 @@ scrape_configs:
     scrape_interval: 5s
     metrics_path: /actuator/prometheus
     static_configs:
-      - targets:
-          - localhost:5000
-  - job_name: node
-    scrape_interval: 5s
-    static_configs:
-    - targets: ['node-exporter:9100']
+      - targets: ['node-exporter:9100','localhost:5000']
   
