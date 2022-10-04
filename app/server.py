@@ -10,13 +10,6 @@ health_status = True
 def hello_world():
     return "Hello, World!"
 
-
-@app.route('/toggle')
-def toggle():
-    global health_status
-    health_status = not health_status
-    return jsonify(health_value=health_status)
-
 @app.route('/health')
 def health():
     if health_status:
