@@ -7,4 +7,10 @@ services:
     volumes:
       - ./app:/app
     expose:
-      - 5555
+      - 5000
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+    depends_on:
+      - app
