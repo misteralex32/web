@@ -1,5 +1,6 @@
 FROM python:3.9
 
+
 WORKDIR /app
 
 RUN apt update
@@ -9,6 +10,6 @@ RUN pip3 install prometheus_flask_exporter
 RUN pip3 install prometheus_client
 
 EXPOSE 5000
-COPY . /web
+COPY . /app
 
-CMD python3 web/server.py
+CMD python3 app/server.py

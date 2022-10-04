@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from prometheus_flask_exporter import PrometheusMetrics
 
 
@@ -6,8 +6,8 @@ app = Flask(__name__)
 metrics = PrometheusMetrics(app)
 
 @app.route('/')
-def hello():
-    return '<h1>Hello, World!</h1>'
+def hello_world():
+    return "Hello, World!"
 
 @app.route('/health')
 def health():
